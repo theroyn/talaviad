@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#e8590c">
+<title>טל ואביעד</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <h1 id="pageTitle">טל ואביעד</h1>
+</header>
+
+<main>
+  <!-- Home -->
+  <section class="page" id="page-home">
+    <div class="hello">
+      <div class="hello-t" id="greeting">בוקר טוב</div>
+      <div class="hello-s">הבוקר עם טל ברמן ואביעד קיסוס · eco99fm · <span dir="ltr">2011–2023</span></div>
+    </div>
+
+    <div id="otdBlock">
+      <h2 id="otdTitle">היום לפני כמה שנים</h2>
+      <div class="hscroll" id="otd"></div>
+    </div>
+
+    <div id="contBlock" hidden>
+      <h2>להמשיך להאזין</h2>
+      <div class="hscroll" id="cont"></div>
+    </div>
+
+    <div id="homeBmBlock" hidden>
+      <h2>סימניות אחרונות <a href="#bookmarks" class="more">הכל</a></h2>
+      <ul class="list" id="homeBm"></ul>
+    </div>
+  </section>
+
+  <!-- Archive -->
+  <section class="page" id="page-archive" hidden>
+    <div class="search">
+      <svg viewBox="0 0 24 24" class="ic"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="q" type="search" placeholder="חיפוש: שם פרק או תאריך (16.9.15)" autocomplete="off" enterkeyhint="search">
+    </div>
+    <div class="chips">
+      <div class="seg" id="typeSeg">
+        <button data-v="all" class="on">הכל</button>
+        <button data-v="full">תוכניות</button>
+        <button data-v="clip">קטעים</button>
+      </div>
+      <select id="year"><option value="">כל השנים</option></select>
+    </div>
+    <div class="count" id="count"></div>
+    <ul class="list" id="list"></ul>
+    <div id="sentinel"></div>
+  </section>
+
+  <!-- Bookmarks -->
+  <section class="page" id="page-bookmarks" hidden>
+    <p class="hint">בזמן האזנה, לחצו על <b>סימנייה</b> בנגן כדי לשמור רגע עם הערה.</p>
+    <ul class="list" id="bmList"></ul>
+  </section>
+
+  <!-- Saved -->
+  <section class="page" id="page-saved" hidden>
+    <div class="card storage" id="storage"></div>
+    <ul class="list" id="savedList"></ul>
+    <div class="card settings">
+      <label class="switch-row">
+        <span>
+          <b>להעדיף גרסה ללא שירים</b>
+          <small>בתוכניות מלאות מ־2016 והלאה. קצרה יותר וחוסכת מקום.</small>
+        </span>
+        <input type="checkbox" id="prefNoMusic">
+      </label>
+    </div>
+  </section>
+
+  <!-- Day view -->
+  <section class="page" id="page-day" hidden>
+    <div class="dayhead">
+      <img id="dayImg" alt="">
+      <div>
+        <div class="day-date" id="dayDate"></div>
+        <div class="day-sub" id="daySub"></div>
+        <button class="btn" id="dayPlayAll">
+          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg> נגן הכל
+        </button>
+      </div>
+    </div>
+    <ul class="list" id="dayList"></ul>
+    <div class="daynav">
+      <button class="btn ghost" id="dayPrev">→ היום הקודם</button>
+      <button class="btn ghost" id="dayNext">היום הבא ←</button>
+    </div>
+  </section>
+</main>
+
+<!-- mini player -->
+<div class="mini" id="mini" hidden>
+  <img id="miniImg" alt="">
+  <div class="mini-info">
+    <div class="mini-t" id="miniTitle"></div>
+    <div class="mini-bar"><i id="miniProg"></i></div>
+  </div>
+  <button class="iconbtn" id="miniPlay" aria-label="נגן/השהה"></button>
+</div>
+
+<!-- full player -->
+<div class="sheet" id="player" hidden>
+  <div class="sheet-top">
+    <button class="iconbtn" id="playerClose" aria-label="סגור">
+      <svg viewBox="0 0 24 24" class="ic"><path d="m6 9 6 6 6-6"/></svg>
+    </button>
+    <span class="sheet-label" id="playerLabel">מתנגן עכשיו</span>
+    <span style="width:44px"></span>
+  </div>
+  <img class="art" id="pImg" alt="">
+  <div class="p-title" id="pTitle"></div>
+  <button class="p-date" id="pDate"></button>
+  <div class="seekwrap">
+    <div class="marks" id="marks"></div>
+    <input type="range" id="seek" min="0" max="1000" value="0" dir="ltr" aria-label="מיקום">
+  </div>
+  <div class="times"><span id="tCur">0:00</span><span id="tDur">0:00</span></div>
+  <div class="controls">
+    <button class="iconbtn big" id="fwd30" aria-label="30 שניות קדימה">
+      <svg viewBox="0 0 24 24" class="ic"><path d="M12 5V2l5 4-5 4V7a6 6 0 1 0 6 6"/><text x="12" y="16.5" text-anchor="middle" font-size="6.5" stroke="none" fill="currentColor">30</text></svg>
+    </button>
+    <button class="playbtn" id="pPlay" aria-label="נגן/השהה"></button>
+    <button class="iconbtn big" id="back15" aria-label="15 שניות אחורה">
+      <svg viewBox="0 0 24 24" class="ic"><path d="M12 5V2L7 6l5 4V7a6 6 0 1 1-6 6"/><text x="12" y="16.5" text-anchor="middle" font-size="6.5" stroke="none" fill="currentColor">15</text></svg>
+    </button>
+  </div>
+  <div class="p-actions">
+    <button class="pill-btn" id="pSpeed">×1</button>
+    <button class="pill-btn" id="pBookmark">
+      <svg viewBox="0 0 24 24" class="ic"><path d="M6 3h12v18l-6-4-6 4z"/></svg> סימנייה
+    </button>
+    <button class="pill-btn" id="pSave"></button>
+    <button class="pill-btn" id="pAuto"></button>
+  </div>
+  <div class="upnext" id="upNext"></div>
+</div>
+
+<!-- bookmark note dialog -->
+<div class="dialog-back" id="bmDialog" hidden>
+  <div class="dialog">
+    <h3 id="bmDialogTitle">סימנייה חדשה</h3>
+    <div class="hint" id="bmDialogWhere"></div>
+    <textarea id="bmNote" rows="3" placeholder="מה היה פה? (לא חובה)"></textarea>
+    <div class="dialog-actions">
+      <button class="btn ghost" id="bmCancel">ביטול</button>
+      <button class="btn" id="bmSave">שמירה</button>
+    </div>
+  </div>
+</div>
+
+<nav class="tabs">
+  <a href="#home" data-tab="home">
+    <svg viewBox="0 0 24 24" class="ic"><path d="M3 11 12 4l9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg><span>בית</span>
+  </a>
+  <a href="#archive" data-tab="archive">
+    <svg viewBox="0 0 24 24" class="ic"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>ארכיון</span>
+  </a>
+  <a href="#bookmarks" data-tab="bookmarks">
+    <svg viewBox="0 0 24 24" class="ic"><path d="M6 3h12v18l-6-4-6 4z"/></svg><span>סימניות</span>
+  </a>
+  <a href="#saved" data-tab="saved">
+    <svg viewBox="0 0 24 24" class="ic"><path d="M12 4v11m-5-5 5 5 5-5M5 20h14"/></svg><span>שמורים</span>
+  </a>
+</nav>
+
+<audio id="audio" preload="metadata"></audio>
+<div class="toast" id="toast" hidden></div>
+<script src="app.js"></script>
+</body>
+</html>

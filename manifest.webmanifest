@@ -1,0 +1,17 @@
+{
+  "name": "טל ואביעד - הארכיון",
+  "short_name": "טל ואביעד",
+  "description": "הבוקר עם טל ברמן ואביעד קיסוס, eco99fm 2011–2023",
+  "lang": "he",
+  "dir": "rtl",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#faf7f2",
+  "theme_color": "#e8590c",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
