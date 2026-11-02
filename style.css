@@ -75,6 +75,8 @@ main { max-width: 640px; margin: 0 auto; }
 .card-ep .ct { font-size: 14px; font-weight: 500; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; min-height: 40px; }
 .card-ep .cm { font-size: 12px; color: var(--muted); margin-top: 2px; }
 .card-ep .years { display: inline-block; font-size: 12px; font-weight: 700; color: var(--accent); background: var(--accent-soft); border-radius: 8px; padding: 0 7px; margin-bottom: 4px; }
+/* progress always fills left-to-right, like the seek bar */
+.bar, .mini-bar { direction: ltr; }
 .bar { height: 4px; background: var(--surface-2); border-radius: 2px; overflow: hidden; margin-top: 6px; }
 .bar > i { display: block; height: 100%; background: var(--accent); }
 
@@ -107,7 +109,7 @@ select { border: 0; background: var(--surface-2); border-radius: 12px; padding: 
 .tag.ok { color: var(--good); }
 .note { font-size: 14px; color: var(--text); margin-top: 3px; white-space: pre-wrap; }
 .ts { font-size: 12px; font-weight: 700; padding: 0 7px; border-radius: 6px; background: var(--accent-soft); color: var(--accent); direction: ltr; font-variant-numeric: tabular-nums; }
-.rowbar { position: absolute; bottom: 0; inset-inline-start: 0; height: 3px; background: var(--accent); }
+.rowbar { position: absolute; bottom: 0; left: 0; height: 3px; background: var(--accent); }
 .acts { display: flex; flex: none; }
 .iconbtn { border: 0; background: none; width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; color: var(--muted); padding: 0; }
 .iconbtn:active { background: var(--surface-2); }

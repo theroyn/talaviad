@@ -664,4 +664,11 @@ $('#playerClose').addEventListener('click', () => closePlayer());
   render();
 })();
 
-if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});
+if ('serviceWorker' in navigator) {
+  // when a new version of the app takes over, reload once to show it (unless something is playing)
+  const hadController = !!navigator.serviceWorker.controller;
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    if (hadController && audio.paused) location.reload();
+  });
+  navigator.serviceWorker.register('sw.js').catch(() => {});
+}

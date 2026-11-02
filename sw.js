@@ -1,10 +1,13 @@
 // Keeps the app itself (pages, scripts, episode list) available offline.
 // Audio is not handled here: saved episodes live in IndexedDB, everything else streams from the station.
-const CACHE = 'talaviad-v1';
+const CACHE = 'talaviad-v3';
 const SHELL = ['./', 'index.html', 'style.css', 'app.js', 'episodes.json', 'manifest.webmanifest', 'icon-192.png', 'icon-512.png'];
 
 self.addEventListener('install', e => {
-  e.waitUntil(caches.open(CACHE).then(c => c.addAll(SHELL)).then(() => self.skipWaiting()));
+  // cache: 'reload' skips the browser's HTTP cache, so a new version never stores stale files
+  e.waitUntil(caches.open(CACHE)
+    .then(c => c.addAll(SHELL.map(u => new Request(u, { cache: 'reload' }))))
+    .then(() => self.skipWaiting()));
 });
 
 self.addEventListener('activate', e => {
