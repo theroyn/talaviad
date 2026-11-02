@@ -48,11 +48,11 @@
 
   <div class="step">
     <div class="num">1</div>
-    <div><b>פותחים בכרום</b><span>לוחצים על הכפתור הכתום למטה. אם הקישור נפתח בדפדפן אחר, מעתיקים אותו לכרום.</span></div>
+    <div><b>פותחים את האפליקציה</b><span>לוחצים על הכפתור הכתום למטה.</span></div>
   </div>
   <div class="step">
     <div class="num">2</div>
-    <div><b>מוסיפים למסך הבית</b><span>לוחצים על <span class="dots">⋮</span> בפינה, ובוחרים <b style="display:inline;font-size:inherit">״התקנת אפליקציה״</b> או <b style="display:inline;font-size:inherit">״הוספה למסך הבית״</b>.</span></div>
+    <div><b>מוסיפים למסך הבית</b><span id="how"></span></div>
   </div>
   <div class="step">
     <div class="num">3</div>
@@ -70,5 +70,15 @@
 
   <p class="bye">האזנה נעימה ❤️</p>
 </main>
+<script>
+  // only the steps for the browser she's actually using
+  const ua = navigator.userAgent;
+  const q = s => `<b style="display:inline;font-size:inherit">״${s}״</b>`;
+  document.getElementById('how').innerHTML = /SamsungBrowser/.test(ua)
+    ? `לוחצים על <span class="dots">☰</span> בתחתית המסך, בוחרים ${q('הוספת דף אל')} ואז ${q('מסך הבית')}.`
+    : /Chrome/.test(ua)
+    ? `לוחצים על <span class="dots">⋮</span> בפינה, ובוחרים ${q('התקנת אפליקציה')} או ${q('הוספה למסך הבית')}.`
+    : `בתפריט של הדפדפן בוחרים ${q('הוספה למסך הבית')}.`;
+</script>
 </body>
 </html>
