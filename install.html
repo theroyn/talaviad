@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#e8590c">
+<title>טל ואביעד בטלפון</title>
+<link rel="icon" href="icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #faf7f2; --surface: #fff; --surface-2: #f3eee6; --text: #1f1a14; --muted: #7a6f62;
+    --accent: #e8590c; --accent-soft: #fde8da; --shadow: 0 1px 2px rgba(60,40,20,.06), 0 6px 18px rgba(60,40,20,.07);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #15120e; --surface: #1f1b16; --surface-2: #2a251f; --text: #f3ede4; --muted: #a99d8e;
+      --accent: #ff7a2e; --accent-soft: #3b2417; --shadow: 0 1px 2px rgba(0,0,0,.3), 0 6px 18px rgba(0,0,0,.3); }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 17px/1.55 Heebo, system-ui, Arial, sans-serif; }
+  main { max-width: 520px; margin: 0 auto; padding: 28px 16px 40px; }
+  .hero { text-align: center; margin-bottom: 26px; }
+  .hero img { width: 88px; height: 88px; border-radius: 22px; box-shadow: var(--shadow); }
+  h1 { font-size: 28px; font-weight: 800; margin: 14px 0 6px; }
+  .hero p { margin: 0; color: var(--muted); }
+  .step { display: flex; gap: 14px; background: var(--surface); border-radius: 18px; padding: 16px; margin-bottom: 12px; box-shadow: var(--shadow); }
+  .num { flex: none; width: 34px; height: 34px; border-radius: 50%; background: var(--accent); color: #fff; font-weight: 800; display: grid; place-items: center; }
+  .step b { display: block; font-size: 18px; margin-bottom: 2px; }
+  .step span { color: var(--muted); }
+  .dots { display: inline-block; font-weight: 800; color: var(--text); background: var(--surface-2); border-radius: 6px; padding: 0 7px; }
+  .btn { display: block; text-align: center; background: var(--accent); color: #fff; text-decoration: none; font-weight: 700; font-size: 18px;
+    border-radius: 14px; padding: 14px; margin: 18px 0 30px; box-shadow: 0 8px 22px rgba(232,89,12,.3); }
+  h2 { font-size: 19px; margin: 0 0 10px; }
+  .tips { list-style: none; padding: 0; margin: 0; }
+  .tips li { display: flex; gap: 12px; align-items: flex-start; background: var(--surface); border-radius: 16px; padding: 12px 14px; margin-bottom: 10px; box-shadow: var(--shadow); }
+  .tips .e { font-size: 22px; line-height: 1.2; }
+  .bye { text-align: center; color: var(--muted); margin-top: 26px; }
+</style>
+</head>
+<body>
+<main>
+  <div class="hero">
+    <img src="icon-192.png" alt="">
+    <h1>טל ואביעד בטלפון</h1>
+    <p>כל התוכניות והקטעים, מ־2011 ועד הסוף.<br>ההתקנה לוקחת דקה.</p>
+  </div>
+
+  <div class="step">
+    <div class="num">1</div>
+    <div><b>פותחים בכרום</b><span>לוחצים על הכפתור הכתום למטה. אם הקישור נפתח בדפדפן אחר, מעתיקים אותו לכרום.</span></div>
+  </div>
+  <div class="step">
+    <div class="num">2</div>
+    <div><b>מוסיפים למסך הבית</b><span>לוחצים על <span class="dots">⋮</span> בפינה, ובוחרים <b style="display:inline;font-size:inherit">״התקנת אפליקציה״</b> או <b style="display:inline;font-size:inherit">״הוספה למסך הבית״</b>.</span></div>
+  </div>
+  <div class="step">
+    <div class="num">3</div>
+    <div><b>זהו!</b><span>האייקון הכתום מחכה לך במסך הבית, כמו כל אפליקציה.</span></div>
+  </div>
+
+  <a class="btn" href="./">פתיחת האפליקציה</a>
+
+  <h2>כמה דברים נחמדים</h2>
+  <ul class="tips">
+    <li><span class="e">⬇️</span><span>החץ ליד כל פרק שומר אותו בטלפון, להאזנה גם בלי אינטרנט. כדאי להשאיר את האפליקציה פתוחה עד שההורדה נגמרת.</span></li>
+    <li><span class="e">🔖</span><span>שמעת משהו מצחיק? כפתור <b>סימנייה</b> בנגן שומר בדיוק את הרגע הזה.</span></li>
+    <li><span class="e">📅</span><span>במסך הבית מחכה <b>״היום, לפני כמה שנים״</b>: מה שודר בתאריך של היום.</span></li>
+  </ul>
+
+  <p class="bye">האזנה נעימה ❤️</p>
+</main>
+</body>
+</html>
